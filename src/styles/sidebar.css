@@ -1,0 +1,109 @@
+.sidebar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 280px;
+  transform: translateX(-100%);
+  transition: transform 220ms ease;
+  background: rgba(246,240,226,0.96);
+  backdrop-filter: blur(6px);
+  border-right: 1px solid rgba(43,43,43,0.18);
+  box-shadow: 2px 0 12px rgba(0,0,0,0.10);
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.sidebar.open {
+  transform: translateX(0);
+}
+
+.sidebar__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 12px;
+  border-bottom: 1px solid rgba(43,43,43,0.12);
+}
+
+.sidebar__title {
+  font-weight: 700;
+}
+
+.sidebar__body {
+  padding: 8px 12px 12px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.sidebar__sectionTitle {
+  padding: 10px 12px;
+  font-weight: 600;
+  font-size: 14px;
+  color: #2b2b2b;
+  opacity: 0.9;
+}
+
+.sidebar__list {
+  border: 1px dashed rgba(43,43,43,0.25);
+  border-radius: 8px;
+  padding: 6px;
+  max-height: 260px;
+  overflow-y: auto;
+  background: rgba(255,255,255,0.6);
+}
+
+.sidebar__listItem {
+  width: 100%;
+  text-align: left;
+  padding: 8px 10px;
+  margin-bottom: 6px;
+  border-radius: 8px;
+  border: 1px solid rgba(43,43,43,0.18);
+  background: rgba(255,255,255,0.85);
+  cursor: pointer;
+}
+
+.sidebar__listItem--active {
+  background: rgba(250,204,21,0.35);
+}
+
+.sidebar__filter {
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(43,43,43,0.25);
+  background: rgba(255,255,255,0.85);
+  outline: none;
+}
+
+.sidebar__divider {
+  height: 16px;
+}
+
+.sidebar__toggle {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 35;
+  padding: 8px 10px;
+  border-radius: 10px;
+  backdrop-filter: blur(6px);
+  background: rgba(246,240,226,0.92);
+  border: 1px solid rgba(43,43,43,0.18);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  cursor: pointer;
+}
+
+.canvas__container {
+  position: absolute;
+  inset: 0;
+  padding-left: 16px;
+  transition: padding 220ms ease;
+}
+
+.canvas__container.shifted {
+  padding-left: 300px; /* sidebar width + gap */
+}

@@ -1,0 +1,114 @@
+
+@keyframes wobble {
+  0% { transform: rotate(0deg) scale(1); }
+  15% { transform: rotate(-3deg) scale(1.05); }
+  30% { transform: rotate(3deg) scale(1.05); }
+  45% { transform: rotate(-2deg) scale(1.03); }
+  60% { transform: rotate(2deg) scale(1.03); }
+  75% { transform: rotate(-1deg) scale(1.01); }
+  100% { transform: rotate(0deg) scale(1); }
+}
+.wobble-once {
+  animation: wobble 0.4s ease-in-out;
+}
+
+
+/* 2) Gentle wobble (slower, subtler) */
+@keyframes wobbleGentle {
+  0% { transform: rotate(0deg) }
+  20% { transform: rotate(-1.2deg) }
+  40% { transform: rotate(1.2deg) }
+  60% { transform: rotate(-0.8deg) }
+  80% { transform: rotate(0.8deg) }
+  100% { transform: rotate(0deg) }
+}
+.wobble-gentle {
+  animation: wobbleGentle 0.6s ease-in-out;
+}
+
+
+/* 3) Comic pop/tada (for confirming actions) */
+@keyframes popTada {
+  0% { transform: scale(1) rotate(0deg); }
+  10% { transform: scale(0.98) rotate(-2deg); }
+  20% { transform: scale(1.08) rotate(2deg); }
+  30% { transform: scale(0.99) rotate(-1deg); }
+  40% { transform: scale(1.04) rotate(1deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+.pop-tada {
+  animation: popTada 420ms cubic-bezier(.2,.7,.3,1);
+}
+
+
+/* 4) Sticky note peel-in (entrance) */
+@keyframes peelIn {
+  0% {
+    transform: rotate(-6deg) translateY(-6px) scale(0.96);
+    opacity: 0;
+    filter: drop-shadow(0 0 0 rgba(0,0,0,0));
+  }
+  60% {
+    transform: rotate(3deg) translateY(2px) scale(1.02);
+    opacity: 1;
+    filter: drop-shadow(4px 6px 0 rgba(0,0,0,0.18));
+  }
+  100% {
+    transform: rotate(0deg) translateY(0) scale(1);
+    filter: drop-shadow(5px 7px 0 rgba(0,0,0,0.28));
+  }
+}
+.peel-in {
+  animation: peelIn 380ms ease-out;
+}
+
+
+/* 5) Hover jiggle for buttons/swatch tiles */
+@keyframes jiggle {
+  0% { transform: translateY(0) }
+  50% { transform: translateY(-1px) }
+  100% { transform: translateY(0) }
+}
+.jiggle-hover:hover {
+  animation: jiggle 260ms ease-in-out;
+}
+
+
+/* 6) Shuffle Tilt Swing */
+@keyframes swing-tilt {
+  0%   { transform: rotate(0deg) scale(1); }
+  25%  { transform: rotate(6deg) scale(1.03); }
+  50%  { transform: rotate(-6deg) scale(1.03); }
+  75%  { transform: rotate(3deg) scale(1.02); }
+  100% { transform: rotate(var(--tilt, 0deg)) scale(1); }
+}
+.swing-tilt {
+  animation: swing-tilt 0.6s ease-in-out forwards;
+}
+
+
+/* 7) Crumple-out (for delete with tear sound) */
+@keyframes crumple-out {
+  0%   { transform: rotate(var(--tilt, 0deg)) scale(1); opacity: 1; }
+  30%  { transform: rotate(var(--tilt, 0deg)) scale(0.9) skewX(5deg); opacity: 0.9; }
+  60%  { transform: rotate(var(--tilt, 0deg)) scale(0.6) skewY(-6deg); opacity: 0.5; }
+  100% { transform: rotate(var(--tilt, 0deg)) scale(0.05); opacity: 0; }
+}
+.crumple-out {
+  animation: crumple-out 0.5s ease forwards;
+}
+
+
+/* 8) Motion safety: respect reduced motion prefs */
+@media (prefers-reduced-motion: reduce) {
+  .wobble-once,
+  .wobble-gentle,
+  .pop-tada,
+  .peel-in,
+  .jiggle-hover,
+  .swing-tilt,
+  .crumple-out {
+    animation: none !important;
+    transition: none !important;
+  }     
+}
