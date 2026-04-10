@@ -2,6 +2,7 @@ import React, { createContext, useContext, useEffect, useState, useMemo } from '
 import api from '../utils/api';
 
 const ProjectsContext = createContext({ projects: [], loading: false, error: null, refresh: () => {} });
+const baseURL = import.meta?.env?.VITE_API_URL || process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 
 export function ProjectsProvider({ children }) {
   const [projects, setProjects] = useState([]);
@@ -12,7 +13,7 @@ export function ProjectsProvider({ children }) {
     try {
       setLoading(true);
       setError(null);
-      const res = await api.get('http://localhost:5000/api/projects');
+      const res = await api.get(`${baseURL}/api/projects`);
       const items = Array.isArray(res.data) ? res.data : [];
       const normalized = items.map(p => ({
         id: String(p.id ?? p._id),
